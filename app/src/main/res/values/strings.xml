@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Gamma Master</string>
+    <string name="default_gamma1">0.15</string>
+    <string name="default_gamma2">0.20</string>
+    <string name="default_z0">50.0</string>
+    <string name="r_load_lt_50"><![CDATA[R < Zo, Ω]]></string>
+    <string name="r_load_50"><![CDATA[R  > Zo, Ω]]></string>
+    <string name="zo_equals">Zo, Ω =</string>
+    <string name="source">Source</string>
+    <string name="load">Load</string>
+    <string name="_50">50.0</string>
+    <string name="return_loss_db">Return loss, dB</string>
+    <string name="gamma">Gamma, Γ</string>
+    <string name="mismatch_error_p_db">Mismatch Error, dB :</string>
+    <string name="mismatch_phase_error_deg">Mismatch Error, ± deg :</string>
+    <string name="vswr">VSWR, n:1</string>
+    <string name="mismatch_loss_db">Mismatch Loss [dB]</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+</resources>

@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginStart="8dp"
+
+    android:clickable="false"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+
+    tools:context="com.sailinghawklabs.gammamaster.MainActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/tv_label_z0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/zo_equals"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_z0"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/et_z0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:inputType="numberDecimal"
+        android:selectAllOnFocus="true"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_label_z0"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/_50" />
+
+    <TextView
+        android:id="@+id/tv_label_SOURCE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/source"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_z0"
+        app:layout_constraintLeft_toLeftOf="@+id/et_rl_1"
+        app:layout_constraintRight_toRightOf="@+id/et_rl_1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/load"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_label_SOURCE"
+        app:layout_constraintLeft_toLeftOf="@+id/et_rl_2"
+        app:layout_constraintRight_toRightOf="@+id/et_rl_2" />
+
+    <View
+        android:id="@+id/tv_divider_line_top"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/black"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_z0" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="3"
+        android:text="@string/return_loss_db"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_rl_1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/et_rl_1" />
+
+    <EditText
+        android:id="@+id/et_rl_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:imeOptions="actionDone"
+        android:inputType="numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toLeftOf="@+id/et_rl_2"
+        app:layout_constraintTop_toTopOf="@+id/et_rl_2"
+        tools:text="-14.5" />
+
+    <EditText
+        android:id="@+id/et_rl_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_divider_line_top"
+        tools:text="-14.5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/gamma"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_gamma_1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/et_gamma_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toRightOf="@+id/et_rl_1"
+        app:layout_constraintTop_toBottomOf="@+id/et_rl_1"
+        tools:text="-14.5" />
+
+    <EditText
+        android:id="@+id/et_gamma_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toRightOf="@+id/et_rl_2"
+        app:layout_constraintTop_toBottomOf="@+id/et_rl_2"
+        tools:text="-14.5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/vswr"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_vswr_1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/et_vswr_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toRightOf="@+id/et_gamma_1"
+        app:layout_constraintTop_toBottomOf="@+id/et_gamma_1"
+        tools:text="-14.5" />
+
+    <EditText
+        android:id="@+id/et_vswr_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toRightOf="@+id/et_gamma_2"
+        app:layout_constraintTop_toBottomOf="@+id/et_gamma_2"
+        tools:text="-14.5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/r_load_50"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_rload_lg_1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/et_rload_lg_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toRightOf="@+id/et_vswr_1"
+        app:layout_constraintTop_toBottomOf="@+id/et_vswr_1"
+        tools:text="-14.5" />
+
+    <EditText
+        android:id="@+id/et_rload_lg_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toRightOf="@+id/et_vswr_2"
+        app:layout_constraintTop_toBottomOf="@+id/et_vswr_2"
+        tools:text="-14.5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/r_load_lt_50"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_rload_sm_1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/et_rload_sm_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toRightOf="@+id/et_rload_lg_1"
+        app:layout_constraintTop_toBottomOf="@+id/et_rload_lg_1"
+        tools:text="-14.5" />
+
+    <EditText
+        android:id="@+id/et_rload_sm_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toRightOf="@+id/et_rload_lg_2"
+        app:layout_constraintTop_toBottomOf="@+id/et_rload_lg_2"
+        tools:text="-14.5" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="3"
+        android:text="@string/mismatch_loss_db"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_misloss_1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/et_misloss_1" />
+
+    <EditText
+        android:id="@+id/et_misloss_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:inputType="numberSigned|numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toRightOf="@+id/et_rload_sm_1"
+        app:layout_constraintTop_toBottomOf="@+id/et_rload_sm_1"
+        tools:text="-14.5" />
+
+    <EditText
+        android:id="@+id/et_misloss_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:inputType="numberSigned|numberDecimal"
+        android:minWidth="62dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintRight_toRightOf="@+id/et_rload_sm_2"
+        app:layout_constraintTop_toBottomOf="@+id/et_rload_sm_2"
+        tools:text="-14.5" />
+
+    <View
+        android:id="@+id/tv_divider_line_bottom"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_misloss_2" />
+
+    <TextView
+        android:id="@+id/tv_label_MISMAG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/mismatch_error_p_db"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_divider_line_bottom" />
+
+    <TextView
+        android:id="@+id/tv_mismag_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_label_MISMAG"
+        app:layout_constraintRight_toLeftOf="@+id/tv_mismag_n"
+        tools:text="+0.32" />
+
+    <TextView
+        android:id="@+id/tv_mismag_n"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_mismag_p"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="-0.24" />
+
+    <TextView
+        android:id="@+id/tv_label_MISPHASE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/mismatch_phase_error_deg"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_label_MISMAG" />
+
+    <TextView
+        android:id="@+id/tv_misphas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="18dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_label_MISPHASE"
+        app:layout_constraintLeft_toRightOf="@+id/tv_label_MISPHASE"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="4.7" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:adSize="BANNER"
+        app:adUnitId="@string/banner_ad_unit_id"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_label_MISPHASE"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.924" />
+
+
+</android.support.constraint.ConstraintLayout>
