@@ -146,8 +146,8 @@ public class GammaSolver implements TextView.OnEditorActionListener, View.OnFocu
 
 // update individual values and calculate the rest
 
-    // *****************************  Gamma is the master -- it recalculates all the others
-    // *****************************
+    // ***************************  Gamma is the master -- it recalculates all the others
+    // ***************************
     public void setGamma(double g) {
         gamma = g;
         rLoad_gtZo = z0 * (1 + gamma) / (1 - gamma);
