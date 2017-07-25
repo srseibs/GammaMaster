@@ -1,6 +1,5 @@
 package com.sailinghawklabs.gammamaster;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -31,32 +30,23 @@ import java.io.InputStream;
 
 import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
 
-// public class MainActivity extends AppCompatActivity implements com.sailinghawklabs.gammamaster.GammaSolver.NotifyCallback, TextView.OnEditorActionListener, View.OnTouchListener {
 
+ @SuppressWarnings("unused")
  public class MainActivity extends AppCompatActivity implements com.sailinghawklabs.gammamaster.GammaSolver.NotifyCallback, TextView.OnEditorActionListener{
     private static final String TAG = MainActivity.class.getName();
 
-    GammaSolver gammaSolver1;
-    GammaSolver gammaSolver2;
-    MismatchSolver mismatchSolver;
-    AdView mainAd;
-    AdView helpAd;
+    private GammaSolver gammaSolver1;
+    private GammaSolver gammaSolver2;
+    private MismatchSolver mismatchSolver;
+     @SuppressWarnings("unused")
+     AdView helpAd;
 
-    EditText et_z0;
+    private EditText et_z0;
     private static final String KEY_PRESET_GAMMA1 = "PRESET_GAMMA1";
     private static final String KEY_PRESET_GAMMA2 = "PRESET_GAMMA2";
     private static final String KEY_PRESET_Z0 = "PRESET_Z0";
     private static final String KEY_GAMMA1 = "GAMMA1";
     private static final String KEY_GAMMA2 = "GAMMA2";
-
-//    @Override
-//    public void onBackPressed() {
-//        Log.d(TAG, "onBackPressed: entered");
-//        View main = (View) findViewById(R.id.et_vswr_1);
-//        main.requestFocus();
-//        super.onBackPressed();
-//    }
-
 
 
     @Override
@@ -66,10 +56,7 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: entered");
 
-//        View container = findViewById(R.id.main_container);
-//        container.setOnTouchListener(this);
-
-        mainAd = (AdView) findViewById(R.id.adView);
+        AdView mainAd = (AdView) findViewById(R.id.adView);
 
         // lookup all the Views -------------------------------------------------------------
         et_z0 = (EditText) findViewById(R.id.et_z0);
@@ -104,13 +91,16 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
             preset();
         }
 
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+
+        // APP ID = ca-app-pub-2187584046682559~1519304691
+        // AD UNIT ID = ca-app-pub-2187584046682559/4751972693
+        MobileAds.initialize(this, getString(R.string.ad_app_id));
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("2437362E2C6F749DA85B4995DD99178E")
                 .build();
         mainAd.loadAd(adRequest);
     }
-
 
 
     @Override
@@ -133,7 +123,7 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
 
     }
 
-    void preset()
+    private void preset()
     {
         // preset to the Shared Preferences (or the String resources as default)
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -162,7 +152,7 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
         mismatchSolver.updateViews(gammaSolver1.getGamma(), gammaSolver2.getGamma());
     }
 
-    void updateZ0(String z0_string) {
+    private void updateZ0(String z0_string) {
         et_z0.setText(z0_string);
         double double_z0 = Double.parseDouble(z0_string);
         gammaSolver1.set_z0(double_z0);
@@ -175,7 +165,6 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
         if(actionId == IME_ACTION_DONE) {
             String input = v.getText().toString();
             Double value = Double.parseDouble(input);
-            hideSoftKeyboard(this);
             InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
@@ -188,21 +177,7 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
         return false;
     }
 
-
-    public static void hideSoftKeyboard(Activity activity) {
-//        InputMethodManager inputMethodManager =
-//                (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-//        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-    }
-
-//    @Override
-//    public boolean onTouch(View v, MotionEvent event) {
-//        Log.d(TAG, "onTouch: entered");
-//        hideSoftKeyboard(this);
-//        return false;
-//    }
-
-    void saveSharedPreferences(double z0, double gamma1, double gamma2) {
+    private void saveSharedPreferences(double z0, double gamma1, double gamma2) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(KEY_PRESET_Z0, Double.toString(z0));
@@ -211,6 +186,7 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
         editor.apply();
     }
 
+    @SuppressWarnings("unused")
     public void menuHandler(MenuItem item) {
         if (item.getItemId() == R.id.action_preset) {
             preset();
@@ -239,12 +215,13 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
 
     private String readAssetFile(String fileName) {
         InputStream is;
-        int size = 0;
+        int size;
         String str = "";
         try {
             is = getAssets().open(fileName);
             size = is.available();
             byte[] buffer = new byte[size];
+            //noinspection ResultOfMethodCallIgnored
             is.read(buffer);
             is.close();
             str = new String(buffer);
@@ -259,16 +236,17 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
         final boolean SHOW_AD_IN_ABOUT = false;
 
         View view = View.inflate(this, R.layout.help_dialog, null);
-        WebView webView = (WebView) view.findViewById(R.id.tv_htmlText);
+        WebView webView = view.findViewById(R.id.tv_htmlText);
 
         String str = readAssetFile("about_html.html");
 
         String replaced = str.replace("__BVN__", BuildConfig.VERSION_NAME);
         str = replaced.replace("__BVC__", Integer.toString(BuildConfig.VERSION_CODE));
-        webView.loadDataWithBaseURL("file:///android_asset/", str, "text/html; charset=utf-8", "utf-9", null);
+        webView.loadDataWithBaseURL("file:///android_asset/", str, "text/html", "UTF-8", null);
 
-        final AdView helpAd = (AdView) view.findViewById(R.id.adView_help);
+        final AdView helpAd = view.findViewById(R.id.adView_help);
 
+        //noinspection ConstantConditions
         if (SHOW_AD_IN_ABOUT) {
             AdRequest adRequest = new AdRequest.Builder()
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
@@ -280,9 +258,9 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
 
         // fill in the title bar
         View titleView = View.inflate(this, R.layout.dialog_title, null);
-        ImageView back = (ImageView) titleView.findViewById(R.id.iv_back);
-        TextView title = (TextView) titleView.findViewById(R.id.tv_title);
-        title.setText("About");
+        ImageView back = titleView.findViewById(R.id.iv_back);
+        TextView title = titleView.findViewById(R.id.tv_title);
+        title.setText(R.string.about);
 
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -304,10 +282,10 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
     private void showHelp() {
         View view = View.inflate(this, R.layout.help_dialog, null);
 
-        WebView webView = (WebView) view.findViewById(R.id.tv_htmlText);
-        final AdView helpAd = (AdView) view.findViewById(R.id.adView_help);
+        WebView webView = view.findViewById(R.id.tv_htmlText);
+        final AdView helpAd = view.findViewById(R.id.adView_help);
         String str = readAssetFile("help_html.html");
-        webView.loadDataWithBaseURL("file:///android_asset/", str, "text/html; charset=utf-8", "utf-9", null);
+        webView.loadDataWithBaseURL("file:///android_asset/", str, "text/html", "UTF-8", null);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
 
@@ -318,9 +296,9 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
 
         // fill in the title bar
         View titleView = View.inflate(this, R.layout.dialog_title, null);
-        ImageView back = (ImageView) titleView.findViewById(R.id.iv_back);
-        TextView title = (TextView) titleView.findViewById(R.id.tv_title);
-        title.setText("Help");
+        ImageView back = titleView.findViewById(R.id.iv_back);
+        TextView title = titleView.findViewById(R.id.tv_title);
+        title.setText(R.string.help);
 
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);

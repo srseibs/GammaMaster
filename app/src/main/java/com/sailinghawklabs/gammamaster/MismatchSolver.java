@@ -3,11 +3,9 @@ package com.sailinghawklabs.gammamaster;
 import android.view.View;
 import android.widget.TextView;
 
-/**
- * Created by Mike on 7/15/2017.
- */
+import java.util.Locale;
 
-public class MismatchSolver {
+class MismatchSolver {
     private TextView tv_mismatchErrorMagPlus;
     private TextView tv_mismatchErrorMagMinus;
     private TextView tv_mismatchErrorPhase;
@@ -29,8 +27,8 @@ public class MismatchSolver {
         double mismatchMag_minus = 20.0 * Math.log10(1 - gamma1 * gamma2);
         double mismatchPhase_deg = gamma1 * gamma2 * 180.0 / Math.PI;
 
-        tv_mismatchErrorMagPlus.setText(String.format("%+.2f", mismatchMag_plus));
-        tv_mismatchErrorMagMinus.setText(String.format("%+.2f", mismatchMag_minus));
-        tv_mismatchErrorPhase.setText(String.format("%.2f", mismatchPhase_deg));
+        tv_mismatchErrorMagPlus.setText(String.format(Locale.getDefault(), "%+.2f", mismatchMag_plus));
+        tv_mismatchErrorMagMinus.setText(String.format(Locale.getDefault(), "%+.2f", mismatchMag_minus));
+        tv_mismatchErrorPhase.setText(String.format(Locale.getDefault(), "%.2f", mismatchPhase_deg));
     }
 }

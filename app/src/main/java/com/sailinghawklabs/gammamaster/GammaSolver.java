@@ -11,21 +11,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
 import static android.view.inputmethod.EditorInfo.IME_FLAG_NO_EXTRACT_UI;
 
-/**
- * Created by Mike on 7/14/2017.
- */
-
-public class GammaSolver implements TextView.OnEditorActionListener, View.OnFocusChangeListener {
-    Context mContext;
+class GammaSolver implements TextView.OnEditorActionListener, View.OnFocusChangeListener {
+    private final Context mContext;
 
     public interface NotifyCallback {
         void reportChange();
     }
 
-    private NotifyCallback myListener;
+    private final NotifyCallback myListener;
 
     public GammaSolver(NotifyCallback listener, Context context) {
         this.myListener = listener;
@@ -34,28 +32,28 @@ public class GammaSolver implements TextView.OnEditorActionListener, View.OnFocu
 
     private static final String TAG = GammaSolver.class.getName();
     private double z0;
-    EditText et_z0;
+    private EditText et_z0;
 
     private double returnLoss_dB;
-    EditText et_returnLoss;
+    private EditText et_returnLoss;
 
     private double gamma;
-    EditText et_gamma;
+    private EditText et_gamma;
 
     private double vswr;
-    EditText et_vswr;
+    private EditText et_vswr;
 
     private double rLoad_gtZo;
-    EditText et_rload_gt;
+    private EditText et_rload_gt;
 
     private double rLoad_ltZo;
-    EditText et_rload_lt;
+    private EditText et_rload_lt;
 
     private double mismatchLoss_dB;
-    EditText et_mismatchLoss;
+    private EditText et_mismatchLoss;
 
 
-    protected void setUpListener(EditText v) {
+    private void setUpListener(EditText v) {
         Log.d(TAG, "setUpListener: entered " + v.getResources().getResourceName(v.getId()));
         v.setImeOptions(IME_ACTION_DONE | IME_FLAG_NO_EXTRACT_UI );
         v.setOnFocusChangeListener(this);
@@ -66,17 +64,18 @@ public class GammaSolver implements TextView.OnEditorActionListener, View.OnFocu
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         Log.d(TAG, "onFocusChange: view = " + v.getResources().getResourceName(v.getId()) + ", bool = " + hasFocus );
-        if (hasFocus == false) {
+        if (!hasFocus) {
             enterValue((EditText)v);
             v.clearFocus();
             myListener.reportChange();
         } else {
+            v.requestFocus();
             InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT);
         }
     }
 
-    public void enterValue(EditText v)
+    private void enterValue(EditText v)
     {
         Double value = null;
         String valueString = v.getText().toString();
@@ -135,13 +134,13 @@ public class GammaSolver implements TextView.OnEditorActionListener, View.OnFocu
 
 
     public void updateViews() {
-        et_z0.setText(String.format("%.1f", z0));
-        et_returnLoss.setText(String.format("%.2f", returnLoss_dB));
-        et_gamma.setText(String.format("%.3f", gamma));
-        et_vswr.setText(String.format("%.3f", vswr));
-        et_rload_gt.setText(String.format("%.1f", rLoad_gtZo));
-        et_rload_lt.setText(String.format("%.1f", rLoad_ltZo));
-        et_mismatchLoss.setText(String.format("%.2f", mismatchLoss_dB));
+        et_z0.setText(String.format(Locale.getDefault(), "%.1f", z0));
+        et_returnLoss.setText(String.format(Locale.getDefault(), "%.2f", returnLoss_dB));
+        et_gamma.setText(String.format(Locale.getDefault(), "%.3f", gamma));
+        et_vswr.setText(String.format(Locale.getDefault(), "%.3f", vswr));
+        et_rload_gt.setText(String.format(Locale.getDefault(), "%.1f", rLoad_gtZo));
+        et_rload_lt.setText(String.format(Locale.getDefault(), "%.1f", rLoad_ltZo));
+        et_mismatchLoss.setText(String.format(Locale.getDefault(), "%.2f", mismatchLoss_dB));
     }
 
 // update individual values and calculate the rest
@@ -162,24 +161,24 @@ public class GammaSolver implements TextView.OnEditorActionListener, View.OnFocu
         setGamma(gamma);// force recalculate;
     }
 
-    public void set_returnLoss(double rl) {
+    private void set_returnLoss(double rl) {
         gamma = Math.pow(10.0, -rl / 20);
         setGamma(gamma);// force recalculate;
     }
 
-    public void setVswr(double vswr) {
+    private void setVswr(double vswr) {
        setGamma((vswr - 1.0)/(vswr + 1.0));
     }
 
-    public void setrLoad_ltZo(double r) {
+    private void setrLoad_ltZo(double r) {
         setGamma( (z0 - r) / (r + z0) );
     }
 
-    public void setrLoad_gtZo(double r) {
+    private void setrLoad_gtZo(double r) {
         setGamma( (r - z0) / (r + z0) );
     }
 
-    public void setMismatchLoss_dB(double loss) {
+    private void setMismatchLoss_dB(double loss) {
         setGamma(  Math.sqrt(  (1 - Math.pow(10, -loss/10.0))));
 
         Log.d(TAG, "setMismatchLoss_dB: loss = " + loss + ", calculated: " + mismatchLoss_dB );
@@ -187,6 +186,7 @@ public class GammaSolver implements TextView.OnEditorActionListener, View.OnFocu
     }
 
 
+    @SuppressWarnings("unused")
     public double getReturnLoss_dB() {
         return returnLoss_dB;
     }
@@ -195,18 +195,22 @@ public class GammaSolver implements TextView.OnEditorActionListener, View.OnFocu
         return gamma;
     }
 
+    @SuppressWarnings("unused")
     public double getVswr() {
         return vswr;
     }
 
+    @SuppressWarnings("unused")
     public double getrLoad_ltZo() {
         return rLoad_ltZo;
     }
 
+    @SuppressWarnings("unused")
     public double getrLoad_gtZo() {
         return rLoad_gtZo;
     }
 
+    @SuppressWarnings("unused")
     public double getMismatchLoss_dB() {
         return mismatchLoss_dB;
     }
