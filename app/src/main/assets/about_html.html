@@ -3,25 +3,17 @@
 <head>
 <style>
 
-img { 
-	width:100%;
-	margin:0px, auto; 
+body {
+  max-width: 500px;
 }
 
-table {
-  width: 100%;
-}
-
-.logo {
-  width: 50%
-}
-
-.about {
-  width: 70%%;
-}
 
 td { 
 	padding: 10px; 
+}
+
+.centered { 
+	text-align: center;
 }
 
 .tab { margin-left: 5%; }
@@ -31,25 +23,26 @@ td {
 <body>
 
 
-<table width="50%" margin=10px>
+<table>
+	<colgroup>
+       <col span="1" style="width: 50%;">
+       <col span="1" style="width: 50%;">
+    </colgroup>
 	<tr>
-		<td class="logo">    
-			<img src="sailing_hawk_logo.png" />
+		<td>    
+			<img style="display:block;" width="100%" height="auto" src="sailing_hawk_logo.png" />
 		</td>
-		<td class="about">
-			<h2>Gamma Master</h2> 
-			<div>
-				All rights reserved. &copy; 2017
-			</div>	
+		<td class="centered">
+			<h1>Gamma Master</h1> 
 		</td>
 	</tr>
+	<tr>
+		<td class="centered" colspan="2">
+			All rights reserved. &copy; 2017
+		</td>
 </table>
 
-<p>
-
-
 <br>Contact:
-<br>
 <div class="tab">
 	<a href="mailto:support@sailinghawklabs.com">support@SailingHawkLabs.com</a>
 </div>
