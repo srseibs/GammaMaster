@@ -28,4 +28,7 @@
     <string name="revert_to_default">Revert to Default</string>
     <string name="help">Help</string>
     <string name="about">About</string>
+    <string name="preset_stored">Preset-values stored!</string>
+    <string name="asset_about_html">about_html.html</string>
+    <string name="asset_help_html">help_html.html</string>
 </resources>
