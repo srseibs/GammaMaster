@@ -39,7 +39,7 @@
         android:layout_marginTop="7dp"
         android:gravity="end"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintLeft_toLeftOf="parent"

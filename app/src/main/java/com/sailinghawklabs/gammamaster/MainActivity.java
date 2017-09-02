@@ -236,8 +236,8 @@ public class MainActivity extends AppCompatActivity implements com.sailinghawkla
         View view = View.inflate(this, R.layout.help_dialog, null);
         WebView webView = view.findViewById(R.id.tv_htmlText);
 
-        String str = readAssetFile(getString(R.string.asset_about_html));
 
+        String str = readAssetFile(getString(R.string.asset_about_html));
         String replaced = str.replace("__BVN__", BuildConfig.VERSION_NAME);
         str = replaced.replace("__BVC__", Integer.toString(BuildConfig.VERSION_CODE));
         webView.loadDataWithBaseURL("file:///android_asset/", str, "text/html", "UTF-8", null);
@@ -265,6 +265,8 @@ public class MainActivity extends AppCompatActivity implements com.sailinghawkla
         builder.setCustomTitle(titleView);
         builder.setView(view);
         final Dialog dialog = builder.create();
+
+
 
         // attach back button
         back.setOnClickListener(new View.OnClickListener() {
