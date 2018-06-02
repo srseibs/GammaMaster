@@ -268,13 +268,7 @@ public class MainActivity extends AppCompatActivity implements com.sailinghawkla
 
 
 
-        // attach back button
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+
         dialog.show();
     }
 
