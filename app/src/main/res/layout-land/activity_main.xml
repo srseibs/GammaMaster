@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,7 +22,6 @@
         android:id="@+id/tv_label_z0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
         android:text="@string/zo_equals"
         app:layout_constraintBaseline_toBaselineOf="@id/et_z0"
@@ -33,7 +33,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:inputType="numberDecimal"
         android:textSize="12sp"
@@ -41,7 +40,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_divider_line_top"
         app:layout_constraintLeft_toRightOf="@id/tv_label_z0"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/_50" />
+        tools:text="@string/_50"
+        tools:ignore="Autofill" />
 
     <TextView
         android:id="@+id/tv_label_SOURCE"
@@ -101,7 +101,6 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
         android:ems="10"
         android:gravity="center"
         android:inputType="numberDecimal"
@@ -109,14 +108,14 @@
         android:textSize="18sp"
         app:layout_constraintRight_toLeftOf="@+id/et_rl_2"
         app:layout_constraintTop_toTopOf="@+id/et_rl_2"
-        tools:text="-14.5" />
+        tools:text="-14.5"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/et_rl_2"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:ems="10"
         android:gravity="center"
         android:inputType="numberDecimal"
@@ -124,12 +123,12 @@
         android:textSize="18sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_divider_line_top"
-        tools:text="-14.5" />
+        tools:text="-14.5"
+        tools:ignore="Autofill" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/gamma"
         android:textSize="14sp"
@@ -166,7 +165,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/vswr"
         android:textSize="14sp"
@@ -203,7 +201,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/r_load_50"
         android:textSize="14sp"
@@ -240,7 +237,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/r_load_lt_50"
         android:textSize="14sp"
@@ -272,7 +268,8 @@
         android:textSize="18sp"
         app:layout_constraintRight_toRightOf="@+id/et_rload_lg_2"
         app:layout_constraintTop_toBottomOf="@+id/et_rload_lg_2"
-        tools:text="-14.5" />
+        tools:text="-14.5"
+        tools:ignore="Autofill" />
 
     <TextView
         android:layout_width="0dp"
@@ -309,7 +306,6 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
         android:ems="10"
         android:gravity="center"
@@ -324,7 +320,6 @@
         android:id="@+id/tv_mismag_p"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:textSize="18sp"
@@ -336,7 +331,6 @@
         android:id="@+id/tv_mismag_n"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_mismag_p"
@@ -347,7 +341,6 @@
         android:id="@+id/tv_label_MISPHASE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:text="@string/mismatch_phase_error_deg"
@@ -357,7 +350,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_mismag_p" />
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -386,7 +379,6 @@
         android:id="@+id/tv_misphas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="16dp"
         android:textSize="18sp"
@@ -414,4 +406,4 @@
 <!--        app:layout_constraintVertical_bias="1.0" />-->
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

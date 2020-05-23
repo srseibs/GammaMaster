@@ -5,10 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:layout_marginEnd="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
     android:layout_marginStart="8dp"
     android:clickable="false"
     android:descendantFocusability="beforeDescendants"
@@ -21,7 +18,6 @@
         android:id="@+id/tv_label_z0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/zo_equals"
         android:textColor="@color/colorPrimaryDark"
@@ -34,7 +30,6 @@
         android:id="@+id/et_z0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:inputType="numberDecimal"
@@ -43,7 +38,8 @@
         android:textSize="12sp"
         app:layout_constraintLeft_toRightOf="@+id/tv_label_z0"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/_50" />
+        tools:text="@string/_50"
+        tools:ignore="Autofill" />
 
     <TextView
         android:id="@+id/tv_label_SOURCE"
@@ -94,7 +90,6 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:ems="3"
         android:text="@string/return_loss_db"
@@ -110,7 +105,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
         android:gravity="center"
         android:imeOptions="actionDone"
         android:inputType="numberDecimal"
@@ -125,7 +119,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:inputType="numberDecimal"
@@ -138,7 +131,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/gamma"
         android:textColor="@color/colorPrimaryDark"
@@ -174,7 +166,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/vswr"
         android:textColor="@color/colorPrimaryDark"
@@ -210,7 +201,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/r_load_50"
         android:textColor="@color/colorPrimaryDark"
@@ -246,7 +236,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/r_load_lt_50"
         android:textColor="@color/colorPrimaryDark"
@@ -277,7 +266,8 @@
         android:textColor="@android:color/black"
         app:layout_constraintRight_toRightOf="@+id/et_rload_lg_2"
         app:layout_constraintTop_toBottomOf="@+id/et_rload_lg_2"
-        tools:text="-14.5" />
+        tools:text="-14.5"
+        android:importantForAutofill="no" />
 
     <TextView
         android:layout_width="0dp"
@@ -338,7 +328,6 @@
         android:id="@+id/tv_label_MISMAG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/mismatch_error_p_db"
@@ -354,7 +343,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_label_MISMAG"
@@ -366,7 +354,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_mismag_p"
@@ -377,7 +364,6 @@
         android:id="@+id/tv_label_MISPHASE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/mismatch_phase_error_deg"
@@ -393,8 +379,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="18dp"
         android:textColor="@android:color/black"
         android:textSize="18sp"
