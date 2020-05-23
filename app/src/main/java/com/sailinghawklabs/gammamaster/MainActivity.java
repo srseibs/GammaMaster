@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.EditText;
@@ -236,8 +237,6 @@ public class MainActivity extends AppCompatActivity implements GammaSolver.Notif
 
         View view = View.inflate(this, R.layout.help_dialog, null);
         WebView webView = view.findViewById(R.id.tv_htmlText);
-
-
         String str = readAssetFile(getString(R.string.asset_about_html));
         String replaced = str.replace("__BVN__", BuildConfig.VERSION_NAME);
         str = replaced.replace("__BVC__", Integer.toString(BuildConfig.VERSION_CODE));
@@ -266,9 +265,13 @@ public class MainActivity extends AppCompatActivity implements GammaSolver.Notif
         builder.setCustomTitle(titleView);
         builder.setView(view);
         final Dialog dialog = builder.create();
-
-
-
+        // attach back button
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
 
         dialog.show();
     }
@@ -300,6 +303,8 @@ public class MainActivity extends AppCompatActivity implements GammaSolver.Notif
                 dialog.dismiss();
             }
         });
+
+
 
 //        final AdView helpAd = view.findViewById(R.id.adView_help);
 //        AdRequest adRequest = new AdRequest.Builder()
