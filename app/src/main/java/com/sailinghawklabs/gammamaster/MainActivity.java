@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -21,9 +19,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.AdView;
+//import com.google.android.gms.ads.MobileAds;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,14 +35,14 @@ import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
 
 
 @SuppressWarnings("unused")
-public class MainActivity extends AppCompatActivity implements com.sailinghawklabs.gammamaster.GammaSolver.NotifyCallback, TextView.OnEditorActionListener {
+public class MainActivity extends AppCompatActivity implements GammaSolver.NotifyCallback, TextView.OnEditorActionListener {
     private static final String TAG = MainActivity.class.getName();
 
     private GammaSolver gammaSolver1;
     private GammaSolver gammaSolver2;
     private MismatchSolver mismatchSolver;
     @SuppressWarnings("unused")
-    AdView helpAd;
+//    AdView helpAd;
 
     private EditText et_z0;
     private static final String KEY_PRESET_GAMMA1 = "PRESET_GAMMA1";
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements com.sailinghawkla
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: entered");
 
-        AdView mainAd = (AdView) findViewById(R.id.adView);
+//        AdView mainAd = (AdView) findViewById(R.id.adView);
 
         // lookup all the Views -------------------------------------------------------------
         et_z0 = (EditText) findViewById(R.id.et_z0);
@@ -93,14 +94,14 @@ public class MainActivity extends AppCompatActivity implements com.sailinghawkla
             preset();
         }
 
-        // APP ID = ca-app-pub-2187584046682559~1519304691
-        // AD UNIT ID = ca-app-pub-2187584046682559/4751972693
-        MobileAds.initialize(this, getString(R.string.ad_app_id));
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("2437362E2C6F749DA85B4995DD99178E")
-                .build();
-        mainAd.loadAd(adRequest);
+//        // APP ID = ca-app-pub-2187584046682559~1519304691
+//        // AD UNIT ID = ca-app-pub-2187584046682559/4751972693
+//        MobileAds.initialize(this, getString(R.string.ad_app_id));
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+//                .addTestDevice("2437362E2C6F749DA85B4995DD99178E")
+//                .build();
+//        mainAd.loadAd(adRequest);
     }
 
     @Override
@@ -242,17 +243,17 @@ public class MainActivity extends AppCompatActivity implements com.sailinghawkla
         str = replaced.replace("__BVC__", Integer.toString(BuildConfig.VERSION_CODE));
         webView.loadDataWithBaseURL("file:///android_asset/", str, "text/html", "UTF-8", null);
 
-        final AdView helpAd = view.findViewById(R.id.adView_help);
-
-        //noinspection ConstantConditions
-        if (SHOW_AD_IN_ABOUT) {
-            AdRequest adRequest = new AdRequest.Builder()
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .build();
-            helpAd.loadAd(adRequest);
-        } else {
-            helpAd.setVisibility(View.GONE);
-        }
+//        final AdView helpAd = view.findViewById(R.id.adView_help);
+//
+//        //noinspection ConstantConditions
+//        if (SHOW_AD_IN_ABOUT) {
+//            AdRequest adRequest = new AdRequest.Builder()
+//                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+//                    .build();
+//            helpAd.loadAd(adRequest);
+//        } else {
+//            helpAd.setVisibility(View.GONE);
+//        }
 
         // fill in the title bar
         View titleView = View.inflate(this, R.layout.dialog_title, null);
@@ -300,12 +301,12 @@ public class MainActivity extends AppCompatActivity implements com.sailinghawkla
             }
         });
 
-        final AdView helpAd = view.findViewById(R.id.adView_help);
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("2437362E2C6F749DA85B4995DD99178E")
-                .build();
-        helpAd.loadAd(adRequest);
+//        final AdView helpAd = view.findViewById(R.id.adView_help);
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+//                .addTestDevice("2437362E2C6F749DA85B4995DD99178E")
+//                .build();
+//        helpAd.loadAd(adRequest);
         dialog.show();
     }
 }
