@@ -14,10 +14,15 @@
     <string name="mismatch_error_p_db">Mismatch Error, dB :</string>
     <string name="mismatch_phase_error_deg">Mismatch Error, ± deg :</string>
     <string name="vswr">VSWR, n:1</string>
-    <string name="mismatch_loss_db">Mismatch Loss [dB]</string>
+    <string name="mismatch_loss_db">Mismatch Loss, dB</string>
     <string name="ad_unit_name" tools:ignore="UnusedResources">main_ad</string>
+
     <string name="ad_app_id">ca-app-pub-2187584046682559~1519304691</string>
-    <string name="banner_ad_unit_id">ca-app-pub-2187584046682559/4751972693</string>
+
+    <string name="banner_ad_unit_id_PRODUCTION">ca-app-pub-2187584046682559/4751972693</string>
+    <string name="banner_ad_unit_id_DEMO">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="banner_ad_unit_id">@string/banner_ad_unit_id_PRODUCTION</string>
 
     <!--for development-->
     <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->

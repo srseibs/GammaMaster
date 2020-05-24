@@ -8,4 +8,32 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyGammaEtStyleLandscape" parenet="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:minWidth">62dp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="MyGammaEtStylePortrait" parenet="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:minWidth">62dp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="MyGammaLabels" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MyMismatchLabels" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

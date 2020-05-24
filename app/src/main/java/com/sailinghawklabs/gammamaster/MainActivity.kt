@@ -15,12 +15,12 @@ import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager.getDefaultSharedPreferences
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
 import com.sailinghawklabs.gammamaster.GammaViewController.OnMismatchUpdate
 import kotlinx.android.synthetic.main.activity_main.*
-
-//import com.google.android.gms.ads.AdRequest;
-//import com.google.android.gms.ads.AdView;
-//import com.google.android.gms.ads.MobileAds;
+import java.util.*
 
 class MainActivity : AppCompatActivity(), OnMismatchUpdate, OnEditorActionListener {
     private lateinit var gammaViewController1: GammaViewController
@@ -36,16 +36,10 @@ class MainActivity : AppCompatActivity(), OnMismatchUpdate, OnEditorActionListen
         private const val KEY_GAMMA2 = "GAMMA2"
     }
 
-    //    AdView helpAd;
-
-//    private lateinit var et_z0 : EditText
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d(TAG, "onCreate: entered")
-
-//        AdView mainAd = (AdView) findViewById(R.id.adView);
 
         et_z0.setOnEditorActionListener(this)
         et_z0.imeOptions = EditorInfo.IME_ACTION_DONE
@@ -75,19 +69,29 @@ class MainActivity : AppCompatActivity(), OnMismatchUpdate, OnEditorActionListen
                 etRloadLt = et_rload_sm_2,
                 etMismatchloss = et_misloss_2)
 
-        // -------------------------------------------------------------------------------
         if (savedInstanceState == null) {
             preset()
         }
 
-//        // APP ID = ca-app-pub-2187584046682559~1519304691
-//        // AD UNIT ID = ca-app-pub-2187584046682559/4751972693
-//        MobileAds.initialize(this, getString(R.string.ad_app_id));
-//        AdRequest adRequest = new AdRequest.Builder()
-//                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-//                .addTestDevice("2437362E2C6F749DA85B4995DD99178E")
-//                .build();
-//        mainAd.loadAd(adRequest);
+        enableAdvertisements()
+    }
+
+    private fun enableAdvertisements() {
+        MobileAds.initialize(this) {
+            Log.d("MainActivity", "MobileAds initialization returned")
+        }
+
+        // add physical device(s) as Test Devices for development (not release)
+        if (BuildConfig.DEBUG) {
+            val config = RequestConfiguration.Builder()
+                    .setTestDeviceIds(Arrays.asList("28B5489C26A46FD308BFB094FC7F36D8"))
+                    .build()
+            MobileAds.setRequestConfiguration(config)
+        }
+        val adRequest = AdRequest.Builder().build()
+
+        adView.loadAd(adRequest)
+        Log.d("MainActivity", "onCreate: ad id = ${adView.adUnitId}")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -140,6 +144,7 @@ class MainActivity : AppCompatActivity(), OnMismatchUpdate, OnEditorActionListen
     // this handles the Z0 edittext changes
     override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent?): Boolean {
         Log.d("MainActivity", "onEditorAction: Z0 changed")
+        v.clearFocus()
         if (actionId == EditorInfo.IME_ACTION_DONE) {
             val z0String = v.text.toString()
             val imm = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -195,8 +200,5 @@ class MainActivity : AppCompatActivity(), OnMismatchUpdate, OnEditorActionListen
             }
         }
     }
-
-
-
 
 }

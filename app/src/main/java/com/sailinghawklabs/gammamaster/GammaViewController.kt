@@ -12,7 +12,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
-import java.util.*
 
 class GammaViewController(
         private val mContext: Context,
@@ -24,10 +23,9 @@ class GammaViewController(
         private var etRloadLt: EditText,
         private var etMismatchloss: EditText
 
-)    : OnEditorActionListener, OnFocusChangeListener {
+) : OnEditorActionListener, OnFocusChangeListener {
 
-    private lateinit var mData: GammaDataManager
-
+    private var mData: GammaDataManager
     private var gamma: Double = 0.2
     private var referenceZ: Double = 50.0
 
@@ -58,7 +56,7 @@ class GammaViewController(
         myListener.onMismatchErrorUpdateNeeded()
     }
 
-    fun getGamma() : Double {
+    fun getGamma(): Double {
         return mData.getGamma()
     }
 
@@ -118,10 +116,12 @@ class GammaViewController(
                 mData.setMismatchlossDb(value)
             }
             etRloadGt.id == viewId -> {
+                if (value < mData.getZ0()) { value = mData.getZ0() }
                 mData.setRloadGtZ0(value)
             }
             etRloadLt.id == viewId -> {
-                mData.setRlLoadLtZ0(value)
+                if (value > mData.getZ0()) { value = mData.getZ0() }
+                mData.setRloadLtZ0(value)
             }
             etVswr.id == viewId -> {
                 mData.setVswr(value)
@@ -152,11 +152,27 @@ class GammaViewController(
 
     private fun updateViews() {
         //etZ0.setText(String.format(Locale.getDefault(), "%.1f", mData.getZ0()))
-        etReturnloss.setText(String.format(Locale.getDefault(), "%.2f", mData.getReturnloss()))
-        etGamma.setText(String.format(Locale.getDefault(), "%.3f", mData.getGamma()))
-        etVswr.setText(String.format(Locale.getDefault(), "%.3f", mData.getVswr()))
-        etRloadGt.setText(String.format(Locale.getDefault(), "%.1f", mData.getRloadGtZ0()))
-        etRloadLt.setText(String.format(Locale.getDefault(), "%.1f", mData.getRloadLtZ0()))
-        etMismatchloss.setText(String.format(Locale.getDefault(), "%.2f", mData.getMismatchLossDb()))
+        etReturnloss.setText(formatDbl(mData.getReturnloss()))
+        etGamma.setText(formatDbl(mData.getGamma()))
+        etVswr.setText(formatDbl(mData.getVswr()))
+        etRloadGt.setText(formatDbl(mData.getRloadGtZ0()))
+        etRloadLt.setText(formatDbl(mData.getRloadLtZ0()))
+        etMismatchloss.setText(formatDbl(mData.getMismatchLossDb()))
     }
+
+    private fun formatDbl(d: Double): String {
+        var formattedNumber : String = ""
+
+        if (d > 1000 && d < Double.MAX_VALUE) {
+            // use eng notation for large decimal values
+            formattedNumber = EngineeringNotation().convert(d, 2)
+        } else {
+            // used fixed number of decimal places
+            formattedNumber = String.format("%.2f", d)
+        }
+
+        return formattedNumber
+
+    }
+
 }

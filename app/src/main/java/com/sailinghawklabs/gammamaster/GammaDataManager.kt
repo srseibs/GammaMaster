@@ -17,12 +17,14 @@ class GammaDataManager(private var gamma: Double, private var referenceZ: Double
     }
 
     private fun recalculate(newGamma: Double) {
-        gamma = newGamma
-        rloadGtZ0 = referenceZ * (1 + gamma) / (1 - gamma)
-        rLoadLtZ0 = referenceZ * (1 - gamma) / (1 + gamma)
-        vswr = (1.0 + gamma) / (1.0 - gamma)
-        returnlossDb = -20.0 * log10(gamma)
-        mismatchlossDb = -10.0 * log10(1 - gamma * gamma)
+        // adding 0.0 avoids a floating point "-0" that is possible with IEEE Floats
+        // it looks ugly but preventing it here means not worrying about display later
+        gamma = 0.0 + newGamma
+        rloadGtZ0 = 0.0 + (referenceZ * (1 + gamma) / (1 - gamma))
+        rLoadLtZ0 = 0.0 + (referenceZ * (1 - gamma) / (1 + gamma))
+        vswr = 0.0 + ((1.0 + gamma) / (1.0 - gamma))
+        returnlossDb = 0.0 + (-20.0 * log10(gamma))
+        mismatchlossDb = 0.0 + (-10.0 * log10(1 - gamma * gamma))
     }
 
     fun getGamma(): Double {
@@ -63,7 +65,7 @@ class GammaDataManager(private var gamma: Double, private var referenceZ: Double
         return rLoadLtZ0
     }
 
-    fun setRlLoadLtZ0(r: Double) {
+    fun setRloadLtZ0(r: Double) {
         recalculate((referenceZ - r) / (r + referenceZ))
     }
 
@@ -81,6 +83,5 @@ class GammaDataManager(private var gamma: Double, private var referenceZ: Double
 
     fun setMismatchlossDb(loss: Double) {
         recalculate(sqrt(1 - (10.0).pow(-loss / 10.0)))
-        Log.d("GammaDataManager", "setMismatchlossDb: loss = $loss, calculated: $mismatchlossDb")
     }
 }

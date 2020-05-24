@@ -31,16 +31,6 @@
         android:layout_marginTop="8dp"
         android:scrollbars="vertical" />
 
-<!--    <com.google.android.gms.ads.AdView-->
-<!--        android:id="@+id/adView_help"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_marginBottom="8dp"-->
-<!--        app:adSize="BANNER"-->
-<!--        app:adUnitId="@string/banner_ad_unit_id" />-->
-
-
 </RelativeLayout>
 
 
