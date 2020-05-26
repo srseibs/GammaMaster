@@ -34,4 +34,6 @@
     <string name="preset_stored">Preset Values stored</string>
     <string name="asset_about_html">about_html.html</string>
     <string name="asset_help_html">help_html.html</string>
+
+    <string name="web_privacy_doc">https://sailinghawklabs.com/privacy/gamma_master_privacy.html</string>
 </resources>
