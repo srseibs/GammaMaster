@@ -4,7 +4,7 @@
     <string name="default_gamma2">0.20</string>
     <string name="default_z0">50.0</string>
     <string name="r_load_lt_50"><![CDATA[R < Zo, Ω]]></string>
-    <string name="r_load_50"><![CDATA[R  > Zo, Ω]]></string>
+    <string name="r_load_gt_50"><![CDATA[R  > Zo, Ω]]></string>
     <string name="zo_equals">Zo, Ω =</string>
     <string name="source">Source</string>
     <string name="load">Load</string>
@@ -17,10 +17,8 @@
     <string name="mismatch_loss_db">Mismatch Loss, dB</string>
     <string name="ad_unit_name" tools:ignore="UnusedResources">main_ad</string>
 
-    <string name="ad_app_id">ca-app-pub-2187584046682559~1519304691</string>
-
     <string name="banner_ad_unit_id_PRODUCTION">ca-app-pub-2187584046682559/4751972693</string>
-    <string name="banner_ad_unit_id_DEMO">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_ad_unit_id_DEMO" tools:ignore="UnusedResources">ca-app-pub-3940256099942544/6300978111</string>
 
     <string name="banner_ad_unit_id">@string/banner_ad_unit_id_PRODUCTION</string>
 

@@ -3,6 +3,7 @@ package com.sailinghawklabs.gammamaster
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
+import kotlin.math.abs
 
 
 internal class GammaDataManagerTest {
@@ -52,11 +53,11 @@ internal class GammaDataManagerTest {
 // region helper fields ------------------------------------------------------------------------
 // endregion helper fields ---------------------------------------------------------------------
 
-    lateinit var SUT: GammaDataManager
+    private lateinit var mSUT: GammaDataManager
 
     @Before
     fun setup() {
-        SUT = GammaDataManager(DEFAULT_CONDITION.gamma, DEFAULT_CONDITION.z0)
+        mSUT = GammaDataManager(DEFAULT_CONDITION.gamma, DEFAULT_CONDITION.z0)
     }
 
     @Test
@@ -67,73 +68,73 @@ internal class GammaDataManagerTest {
     @Test
     fun setz0to75_getSolution() {
         val index = 0
-        SUT.setZ0(solutionVectors[index].z0)
+        mSUT.setZ0(solutionVectors[index].z0)
         validateSolution(solutionVectors[index])
     }
 
     @Test
     fun setReturnLossTo0_getSolution() {
         val index = 1
-        SUT.setReturnloss(solutionVectors[index].returnLossDb)
+        mSUT.setReturnloss(solutionVectors[index].returnLossDb)
         validateSolution(solutionVectors[index])
     }
 
     @Test
     fun setVSWRto2_getSolution() {
         val index = 2
-        SUT.setVswr(solutionVectors[index].vswr)
+        mSUT.setVswr(solutionVectors[index].vswr)
         validateSolution(solutionVectors[index])
     }
 
     @Test
     fun setGammaTo0_getSolution() {
         val index = 3
-        SUT.setGamma(solutionVectors[index].gamma)
+        mSUT.setGamma(solutionVectors[index].gamma)
         validateSolution(solutionVectors[index])
     }
 
     @Test
     fun setRgtZ0To12p50_getSolution() {
         val index = 4
-        SUT.setRloadGtZ0(solutionVectors[index].rGtZ0)
+        mSUT.setRloadGtZ0(solutionVectors[index].rGtZ0)
         validateSolution(solutionVectors[index])
     }
 
     @Test
     fun setRltZ0To20_getSolution() {
         val index = 5
-        SUT.setRloadLtZ0(solutionVectors[index].rLtZ0)
+        mSUT.setRloadLtZ0(solutionVectors[index].rLtZ0)
         validateSolution(solutionVectors[index])
     }
 
     @Test
     fun setMismatchTo3_getSolution() {
         val index = 6
-        SUT.setMismatchlossDb(solutionVectors[index].misMatchDb)
+        mSUT.setMismatchlossDb(solutionVectors[index].misMatchDb)
         validateSolution(solutionVectors[index])
     }
 
     // region helper methods -----------------------------------------------------------------------
-    fun validateSolution(solution: Solution) {
-        assertThat("check Z0", doubleEquals(SUT.getZ0(), solution.z0))
-        assertThat("check returnLoss", doubleEquals(SUT.getReturnloss(), solution.returnLossDb, 0.01))
-        assertThat("check gamma", doubleEquals(SUT.getGamma(), solution.gamma, 0.005))
-        assertThat("check VSWR", doubleEquals(SUT.getVswr(), solution.vswr,0.005))
-        assertThat("check R>Z0 calc", doubleEquals(SUT.getRloadGtZ0(), solution.rGtZ0, 0.01))
-        assertThat("check R<Z0 calc", doubleEquals(SUT.getRloadLtZ0(), solution.rLtZ0, 0.01))
-        assertThat("check Mismatch Loss", doubleEquals(SUT.getMismatchLossDb(), solution.misMatchDb, 0.01))
+    private fun validateSolution(solution: Solution) {
+        assertThat("check Z0", doubleEquals(mSUT.getZ0(), solution.z0))
+        assertThat("check returnLoss", doubleEquals(mSUT.getReturnloss(), solution.returnLossDb, 0.01))
+        assertThat("check gamma", doubleEquals(mSUT.getGamma(), solution.gamma, 0.005))
+        assertThat("check VSWR", doubleEquals(mSUT.getVswr(), solution.vswr,0.005))
+        assertThat("check R>Z0 calc", doubleEquals(mSUT.getRloadGtZ0(), solution.rGtZ0, 0.01))
+        assertThat("check R<Z0 calc", doubleEquals(mSUT.getRloadLtZ0(), solution.rLtZ0, 0.01))
+        assertThat("check Mismatch Loss", doubleEquals(mSUT.getMismatchLossDb(), solution.misMatchDb, 0.01))
     }
 
 
-    fun doubleEquals(d1: Double, d2: Double, threshold: Double = 0.001): Boolean {
+    private fun doubleEquals(d1: Double, d2: Double, threshold: Double = 0.001): Boolean {
         var result = false
         if (d1.isInfinite() && d2.isInfinite()) {
             result = true
-        } else if (Math.abs(d1 - d2) < threshold) {
+        } else if (abs(d1 - d2) < threshold) {
             result = true
         }
 
-        if (result == false) {
+        if (!result) {
             println("GammaDataManagerTest, not equal: d1: $d1, d2: $d2, d1-d2: ${d1 - d2}")
         }
 

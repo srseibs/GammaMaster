@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity(), OnMismatchUpdate, OnEditorActionListen
         // add physical device(s) as Test Devices for development (not release)
         if (BuildConfig.DEBUG) {
             val config = RequestConfiguration.Builder()
-                    .setTestDeviceIds(Arrays.asList("28B5489C26A46FD308BFB094FC7F36D8"))
+                    .setTestDeviceIds(listOf("28B5489C26A46FD308BFB094FC7F36D8"))
                     .build()
             MobileAds.setRequestConfiguration(config)
         }

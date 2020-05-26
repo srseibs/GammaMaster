@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
- img {
- 	max-width:80%;
-    max-height:60px;
- }
+    <style>
+         img {
+            max-width:80%;
+            max-height:60px;
+         }
 
- em {
- 	text-decoration: underline;
- }
- </style>
+         em {
+            text-decoration: underline;
+         }
+    </style>
 </head>
 <body>
 
@@ -27,68 +27,109 @@
 </ul>
 
 <h3 id="pre">Preset, Save and Revert</h3>
-You can easily change the values of any parameter by tapping it and the other values will recalculate automatically. As a convenience, you can restore the display to Preset or Revert values.
+You can easily change the values of any parameter by tapping it and the other values will
+recalculate automatically. As a convenience, you can restore the display to Preset or Revert values.
 <p>
-<p><em>Preset</em> will restore the displayed values to the custom set of values that you have stored.
-<p><em>Save Current as Preset</em> will save all of the current settings. These custom values will be set when the app starts up and whenever you select Preset. 
-<p><em>Revert</em> will set the displayed values to the original factory settings. 
+<p><em>Preset</em> will restore the displayed values to the custom set of values that you have
+    stored.
+<p><em>Save Current as Preset</em> will save all of the current settings. These custom values will
+    be set when the app starts up and whenever you select Preset.
+<p><em>Revert</em> will set the displayed values to the original factory settings.
 
 <h3 id="over">Overview</h3>
-This app provides some powerful and simple-to-use tools to deal with reflections in a transmission line. A reflection occurs when a signal travels on a transmission line and encounters a change in characteristic impedance. Like light, when radio frequency (RF) energy encounters a discontinuity or unmatched impedance, the energy is split between transmission into or past the discontinuity and a reflection back towards the source. 
+This app provides some powerful and simple-to-use tools to deal with reflections in a transmission
+line. A reflection occurs when a signal travels on a transmission line and encounters a change in
+characteristic impedance. Like light, when radio frequency (RF) energy encounters a discontinuity or
+unmatched impedance, the energy is split between transmission into or past the discontinuity and a
+reflection back towards the source.
 
 <p><img src="standing-wave_2.gif">
-<p>While the Source and a Load each have a reflection situation caused by the Source and Load discontinuity, the reflected waves interact with each other and, due to the magnitude and phase of the reflections, there will be uncertainties in the magnitude and phase of the combined signal. 
+<p>While the Source and a Load each have a reflection situation caused by the Source and Load
+    discontinuity, the reflected waves interact with each other and, due to the magnitude and phase
+    of the reflections, there will be uncertainties in the magnitude and phase of the combined
+    signal.
 
 <p>This app allow you to:
 <ul>
-	<li>Easily convert between terms describing a mismatch: Return Loss, &Gamma; (Gamma), Load Resistance and VSWR</li>
-	<li>Instantly show the impact of reflections in terms of Mismatch Loss</li>
-	<li>Show how a source and a load impedance interact to cause Mismatch Uncertainty.</li>
-</ul> 
+    <li>Easily convert between terms describing a mismatch: Return Loss, &Gamma; (Gamma), Load
+        Resistance and VSWR
+    </li>
+    <li>Instantly show the impact of reflections in terms of Mismatch Loss</li>
+    <li>Show how a source and a load impedance interact to cause Mismatch Uncertainty.</li>
+</ul>
 
-<p>You can select any of the reflection terms for the Load or Source and edit the value. You can also change the characteristic impedance Z0. The updated value is use to recalculate all of the remaining values.
+<p>You can select any of the reflection terms for the Load or Source and edit the value. You can
+    also change the characteristic impedance Z0. The updated value is use to recalculate all of the
+    remaining values.
 
 
-<!-- ****************************************************** -->
+    <!-- ****************************************************** -->
 <h3 id="rl">Return Loss</h3>
 <img src="return_loss_equation.gif">
-<p>Return loss is the ratio of the incident power to the reflected power. It is represented as a power ratio, in dB. Since it is defined as a loss, it is a positive value. 
+<p>Return loss is the ratio of the incident power to the reflected power. It is represented as a
+    power ratio, in dB. Since it is defined as a loss, it is a positive value.
 
 
-<!-- ****************************************************** -->
+    <!-- ****************************************************** -->
 <h3 id="gamma">Gamma</h3>
 <img src="gamma_from_inc_refl.gif">
-<p>The reflection coefficient, or commonly &Gamma; ("Gamma"), is the ratio of the reflected voltage (Vr) to the forward or incident voltage (Vf). &Gamma; is typically a unitless ratio with 1.0 representing a complete reflection which occurs at an open or a short impedance. A perfectly matched termination has a &Gamma; of 0;
+<p>The reflection coefficient, or commonly &Gamma; ("Gamma"), is the ratio of the reflected voltage
+    (Vr) to the forward or incident voltage (Vf). &Gamma; is typically a unitless ratio with 1.0
+    representing a complete reflection which occurs at an open or a short impedance. A perfectly
+    matched termination has a &Gamma; of 0.
 
-<p>You can calculate the &Gamma; from the value of transmission line impedance, Z<sub>S</sub> and the Load impedance Z<sub>L</sub>:
+<p>You can calculate the &Gamma; from the value of transmission line impedance, Z<sub>S</sub> and
+    the Load impedance Z<sub>L</sub>:
 <p><img src="gamma_from_z.gif">
 
 
-<!-- ****************************************************** -->
+    <!-- ****************************************************** -->
 <h3 id="vswr">VSWR</h3>
-VSWR stands for "Voltage Standing Wave Ratio". It is also referred to as "SWR", standing wave ratio, and is often pronounced "swur" to rhyme with "fur". When a reflection occurs, the incident and reflected waves add and subtract along the transmission line to form maximum and minimum voltages. The measure of the max-to-min voltages provide yet another view into the magnitude of the reflection, just like &Gamma; or Return Loss.
+VSWR stands for "Voltage Standing Wave Ratio". It is also referred to as "SWR", standing wave ratio,
+and is often pronounced "swur" to rhyme with "fur". When a reflection occurs, the incident and
+reflected waves add and subtract along the transmission line to form maximum and minimum voltages.
+The measure of the max-to-min voltages provide yet another view into the magnitude of the
+reflection, just like &Gamma; or Return Loss.
 <p><img src="vswr_from_vmax_vmin.gif">
 
-<!-- ****************************************************** -->
+    <!-- ****************************************************** -->
 <h3 id="rload">R Load</h3>
-For a given Reflection Coefficient or &Gamma;, there exists two solutions for |Z<sub>L</sub>| that could cause that particular reflection. One is larger than the characteristic impedance (approaching an open) and one is smaller (approaching a short). While complex values are possible too, this app calculates the 2 purely resistive solutions (R&gt;Z<sub>0</sub> and R&lt;Z<sub>0</sub>). These values can be edited like the other values in order to re-calculate everything else.
+For a given Reflection Coefficient or &Gamma;, there exists two solutions for |Z<sub>L</sub>| that
+could cause that particular reflection. One is larger than the characteristic impedance (approaching
+an open) and one is smaller (approaching a short). While complex values are possible too, this app
+calculates the 2 purely resistive solutions (R&gt;Z<sub>0</sub> and R&lt;Z<sub>0</sub>). These
+values can be edited like the other values in order to re-calculate everything else.
 
 
 <!-- ****************************************************** -->
 
 <h3 id="mml">Mismatch Loss</h3>
-When a signal encounters an impedance discontinuity, there is a reflection of some energy. This can be modeled as a loss, since the transmission path experienced a loss of signal strength due to the reflection. The calculation of this Mismatch Loss (in dB) is as follows, where P<sub>i</sub> is the incident power level in Watts and P<sub>r</sub> is the reflected power level in Watts.
+When a signal encounters an impedance discontinuity, there is a reflection of some energy. This can
+be modeled as a loss, since the transmission path experienced a loss of signal strength due to the
+reflection. The calculation of this Mismatch Loss (in dB) is as follows, where P<sub>i</sub> is the
+incident power level in Watts and P<sub>r</sub> is the reflected power level in Watts.
 <p><img src="mismatch_loss.gif">
 
 
 <h3 id="mme">Mismatch Error</h3>
-Mismatch error is the result of two mismatch conditions interacting with each other: one at the source, and one at the load. A series of reflections and re-reflections occur, resulting in constructive and destructive combinations of the series of waves. The actual result is a complicated function of the phases of the source and load mismatch. This app will calculate the worst case of the possible magnitude and phase errors.
-<p>The magnitude error is calculated by: 
-<br>+ 20 * log (1 + | Γ<sub>S</sub> * Γ<sub>L</sub>| ) [dB]
-<br>- 20 * log (1 - | Γ<sub>S</sub> * Γ<sub>L</sub>| ) [dB]
-<p>The phase error is calculated by:
-<br>±(180 / π) * ( | Γ<sub>S</sub> | * | Γ<sub>L</sub> | )  [°]
-        
+Mismatch error is the result of two mismatch conditions interacting with each other: one at the
+source, and one at the load. A series of reflections and re-reflections occur, resulting in
+constructive and destructive combinations of the series of waves. The actual result is a complicated
+function of the phases of the source and load mismatch. This app will calculate the worst case of
+the possible magnitude and phase errors.
+<p>
+    The magnitude error is calculated by:
+    <code>
+        <br>+ 20 * log (1 + |&Gamma;<sub>S</sub> * &Gamma;<sub>L</sub>| ) [dB]
+        <br>- 20 * log (1 - |&Gamma;<sub>S</sub> * &Gamma;<sub>L</sub>| ) [dB]
+    </code>
+<p>
+    The phase error is calculated by:
+    <code>
+    <br>&plusmn; (180 / &pi;) * (|&Gamma;<sub>S</sub>| * |&Gamma;<sub>L</sub>|) [&deg;]
+    </code>
+    <br>
+    <br>
 
 </body>
 </html>

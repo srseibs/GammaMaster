@@ -1,5 +1,9 @@
 package com.sailinghawklabs.gammamaster
 
+import kotlin.math.floor
+import kotlin.math.log10
+import kotlin.math.pow
+
 class EngineeringNotation {
 
 
@@ -24,16 +28,16 @@ class EngineeringNotation {
 
         // If the value is negative, make it positive so the log10 works
         val posVal = if (`val` < 0) -`val` else `val`
-        val log10 = Math.log10(posVal)
+        val log10 = log10(posVal)
 
         // Determine how many orders of 3 magnitudes the value is
-        val count = Math.floor(log10 / 3).toInt()
+        val count = floor(log10 / 3).toInt()
 
         // Calculate the index of the prefix symbol
         val index = count + PREFIX_OFFSET
 
         // Scale the value into the range 1<=val<1000
-        `val` /= Math.pow(10.0, count * 3.toDouble())
+        `val` /= 10.0.pow(count * 3.toDouble())
         return if (index >= 0 && index < PREFIX_ARRAY.size) {
             // If a prefix exists use it to create the correct string
             String.format("%." + dp + "f%s", `val`, PREFIX_ARRAY[index])
@@ -43,6 +47,7 @@ class EngineeringNotation {
         }
     }
 
+    @Suppress("unused")
     fun parse(str: String): Double {
         return parse(str.toCharArray())
     }
@@ -84,7 +89,7 @@ class EngineeringNotation {
             gotChar = true
 
             // Check for a numerical digit
-            if (chars[c] >= '0' && chars[c] <= '9') {
+            if (chars[c] in '0'..'9') {
                 if (gotPrefix || gotDP) exponent--
                 if (gotPrefix && gotDP) throw NumberFormatException("Cannot have digits after prefix when number includes decimal point")
                 value *= 10.0
@@ -118,6 +123,6 @@ class EngineeringNotation {
 
         // Apply negation if required
         if (gotMinus) value *= -1.0
-        return value * Math.pow(10.0, exponent.toDouble())
+        return value * 10.0.pow(exponent.toDouble())
     }
 }

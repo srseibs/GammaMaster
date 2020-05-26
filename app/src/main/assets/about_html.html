@@ -1,52 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
+    <style>
+			body {
+			  max-width: 500px;
+			  font-family: "verdana";
+			}
 
-body {
-  max-width: 500px;
-}
 
+			td {
+				padding: 10px;
+			}
 
-td { 
-	padding: 10px; 
-}
+			.copyright {
+				font-style: italic;
+			}
 
-.centered { 
-	text-align: center;
-}
+			.version {
+				font-style: italic;
+				font-size: small;
+			}
 
-.tab { margin-left: 5%; }
+			.centered {
+				text-align: center;
+			}
 
- </style>
+			.tab { margin-left: 5%; }
+
+    </style>
 </head>
 <body>
 
-
 <table>
-	<colgroup>
-       <col span="1" style="width: 30%;">
-       <col span="1" style="width: 70%;">
+    <colgroup>
+        <col span="1" style="width: 50%;">
+        <col span="1" style="width: 50%;">
     </colgroup>
-	<tr>
-		<td>    
-			<img style="display:block;" width="100%" height="auto" src="sailing_hawk_logo.png" />
-		</td>
-		<td class="centered">
-			<h1>Gamma Master</h1> 
-		</td>
-	</tr>
-	<tr>
-		<td class="centered" colspan="2">
-			All rights reserved. &copy;2020
-		</td>
+    <tr>
+        <td>
+            <img style="display:block;" width="100%" height="auto" src="sailing_hawk_logo.png"/>
+        </td>
+        <td class="centered">
+            <h2>Gamma Master</h2>
+			<div class="version">
+				<b>Version:</b><br>
+				__BVN__ (__BVC__)
+			</div>
+        </td>
+    </tr>
+    <tr>
+        <td class="centered copyright" colspan="2">
+            All rights reserved. &copy;2020
+        </td>
 </table>
-
-<br>Contact:
+<br>
+<b>Contact:</b>
 <div class="tab">
-	<a href="mailto:support@sailinghawklabs.com">support@SailingHawkLabs.com</a>
+    <a href="mailto:support@sailinghawklabs.com">support@SailingHawkLabs.com</a>
 </div>
 <p>
-<p>Version: __BVN__ (__BVC__)
+<p>
+
 </body>
 </html>

@@ -163,12 +163,12 @@ class GammaViewController(
     private fun formatDbl(d: Double): String {
         var formattedNumber : String = ""
 
-        if (d > 1000 && d < Double.MAX_VALUE) {
+        formattedNumber = if (d > 1000 && d < Double.MAX_VALUE) {
             // use eng notation for large decimal values
-            formattedNumber = EngineeringNotation().convert(d, 2)
+            EngineeringNotation().convert(d, 2)
         } else {
             // used fixed number of decimal places
-            formattedNumber = String.format("%.2f", d)
+            String.format("%.2f", d)
         }
 
         return formattedNumber

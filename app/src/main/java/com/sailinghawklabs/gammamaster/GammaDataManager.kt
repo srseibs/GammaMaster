@@ -1,6 +1,5 @@
 package com.sailinghawklabs.gammamaster
 
-import android.util.Log
 import kotlin.math.log10
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -13,7 +12,12 @@ class GammaDataManager(private var gamma: Double, private var referenceZ: Double
     private var mismatchlossDb: Double = 0.0
 
     init {
-        recalculate(gamma)
+        gamma = positiveOnly(gamma)
+        recalculate(positiveOnly(gamma))
+    }
+
+    private fun positiveOnly(x: Double): Double {
+        return if (x < 0) 0.0 else x
     }
 
     private fun recalculate(newGamma: Double) {
@@ -32,7 +36,7 @@ class GammaDataManager(private var gamma: Double, private var referenceZ: Double
     }
 
     fun setGamma(newGamma: Double) {
-        recalculate(newGamma)
+        recalculate(positiveOnly(newGamma))
     }
 
     fun getZ0(): Double {
@@ -40,7 +44,7 @@ class GammaDataManager(private var gamma: Double, private var referenceZ: Double
     }
 
     fun setZ0(z0: Double) {
-        referenceZ = z0
+        referenceZ = positiveOnly(z0)
         recalculate(gamma)
     }
 
@@ -48,7 +52,8 @@ class GammaDataManager(private var gamma: Double, private var referenceZ: Double
         return returnlossDb
     }
 
-    fun setReturnloss(rl: Double) {
+    fun setReturnloss(inRl: Double) {
+        val rl = positiveOnly(inRl)
         gamma = (10.0).pow(-rl / 20)
         recalculate(gamma)
     }
@@ -57,7 +62,8 @@ class GammaDataManager(private var gamma: Double, private var referenceZ: Double
         return vswr
     }
 
-    fun setVswr(vswr: Double) {
+    fun setVswr(inVswr: Double) {
+        val vswr = positiveOnly(inVswr)
         recalculate((vswr - 1.0) / (vswr + 1.0))
     }
 
@@ -65,7 +71,8 @@ class GammaDataManager(private var gamma: Double, private var referenceZ: Double
         return rLoadLtZ0
     }
 
-    fun setRloadLtZ0(r: Double) {
+    fun setRloadLtZ0(inR: Double) {
+        val r = positiveOnly(inR)
         recalculate((referenceZ - r) / (r + referenceZ))
     }
 
@@ -73,7 +80,8 @@ class GammaDataManager(private var gamma: Double, private var referenceZ: Double
         return rloadGtZ0
     }
 
-    fun setRloadGtZ0(r: Double) {
+    fun setRloadGtZ0(inR: Double) {
+        val r = positiveOnly(inR)
         recalculate((r - referenceZ) / (r + referenceZ))
     }
 
@@ -81,7 +89,8 @@ class GammaDataManager(private var gamma: Double, private var referenceZ: Double
         return mismatchlossDb
     }
 
-    fun setMismatchlossDb(loss: Double) {
+    fun setMismatchlossDb(inLoss: Double) {
+        val loss  = positiveOnly(inLoss)
         recalculate(sqrt(1 - (10.0).pow(-loss / 10.0)))
     }
 }
