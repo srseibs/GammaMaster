@@ -66,6 +66,10 @@ class GammaViewController(
         myListener.onMismatchErrorUpdateNeeded()
     }
 
+    fun getReferenceZ() : Double {
+        return mData.getZ0()
+    }
+
     interface OnMismatchUpdate {
         fun onMismatchErrorUpdateNeeded()
     }

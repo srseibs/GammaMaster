@@ -173,7 +173,7 @@ class MainActivity : AppCompatActivity(), OnMismatchUpdate, OnEditorActionListen
 
             R.id.action_save -> {
                 saveSharedPreferences(
-                        et_z0.text.toString().toDouble(),
+                        gammaViewController1.getReferenceZ(),
                         gammaViewController1.getGamma(),
                         gammaViewController2.getGamma())
                 val toast = Toast.makeText(this, R.string.preset_stored, Toast.LENGTH_LONG)
